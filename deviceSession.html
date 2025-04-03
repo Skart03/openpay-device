@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://sandbox-api.openpay.mx/openpay.v1.min.js"></script>
+    <script type="text/javascript" src="https://sandbox-api.openpay.mx/openpay-data.v1.min.js"></script>
+</head>
+<body>
+    <script>
+        OpenPay.setId("mii1g0vrgi2zy9e3lkvy"); // Reemplaza con tu Merchant ID
+        OpenPay.setApiKey("pk_af6e931fac7ee4eeea4fd8709e2642ee8"); // Reemplaza con tu Public Key
+        OpenPay.setSandboxMode(true);
+
+        // Generar el device_session_id
+        var deviceSessionId = OpenPay.deviceData.setup();
+        console.log("Device Session ID:", deviceSessionId);
+
+        // Enviar el device_session_id a Apphive
+        function sendToApphive() {
+            window.ReactNativeWebView.postMessage(deviceSessionId);
+        }
+
+        setTimeout(sendToApphive, 3000); // Enviar después de 3 segundos
+    </script>
+</body>
+</html>
